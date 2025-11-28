@@ -52,3 +52,14 @@ td, th {
   background: #fafafa;
   border: 1px dashed #aaa;
 }
+
+
+.answer-pill.correct {
+  background: #d6eaff;   /* 青 */
+  border-color: #3a7bd5;
+}
+
+.answer-pill.wrong {
+  background: #ffd6d6;   /* 赤 */
+  border-color: #d53a3a;
+}
