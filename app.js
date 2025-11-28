@@ -229,12 +229,35 @@ function checkAnswer() {
 
   render();
 
-  if(allCorrect){
-    setTimeout(() => {
-      nextProblem();
-    }, 800);
-  }
+  // if(allCorrect){
+  //   setTimeout(() => {
+  //     nextProblem();
+  //   }, 800);
+  // }
 }
+
+
+let map;
+
+function initMap() {
+  map = L.map('mapContainer', {
+    center: [20, 0],   // 緯度・経度の中心
+    zoom: 2,           // 初期ズーム
+    minZoom: 1,
+    maxZoom: 10
+  });
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap contributors'
+  }).addTo(map);
+}
+
+// ページロード時に呼び出す
+window.onload = () => {
+  initMap();
+  renderSetSelect(); // 既存処理
+};
+
 
 
 
