@@ -24,11 +24,14 @@ function render() {
 
   currentProblem.rankings.forEach((r, i) => {
     const row = document.createElement("tr");
+
+    const pill = answers[i]
+      ? `<div class="answer-pill">${answers[i]}</div>`
+      : `<div class="answer-pill empty">　</div>`;
+
     row.innerHTML = `
       <td>${i + 1}位</td>
-      <td class="answer-cell" onclick="removeAnswer(${i})">
-        ${answers[i] ?? ""}
-      </td>
+      <td onclick="removeAnswer(${i})">${pill}</td>
       <td>${r.value}</td>
     `;
     table.appendChild(row);
@@ -71,12 +74,25 @@ function nextProblem() {
   loadProblem();
 }
 
+let stats = JSON.parse(localStorage.getItem("stats")) || {
+  total: 0,
+  correct: 0
+};
+
 function checkAnswer() {
   let correct = 0;
   answers.forEach((a, i) => {
     if (a === currentProblem.rankings[i].country) correct++;
   });
-  alert(`正答率: ${correct}/5`);
+
+  stats.total += 5;
+  stats.correct += correct;
+  localStorage.setItem("stats", JSON.stringify(stats));
+
+  alert(
+    `今回：${correct}/5\n` +
+    `累計正答率：${(stats.correct / stats.total * 100).toFixed(1)}%`
+  );
 }
 
 loadProblem();
