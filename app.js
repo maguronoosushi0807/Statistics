@@ -61,6 +61,9 @@ function render() {
 }
 
 function placeAnswer(country) {
+  // ★ 操作が入ったら色を消す
+  if (checked) checked = false;
+
   const idx = answers.findIndex(a => a === null);
   if (idx === -1) return;
 
@@ -68,19 +71,22 @@ function placeAnswer(country) {
   pool = pool.filter(c => c !== country);
   render();
 
-  // ★ 全部埋まったら即チェック
+  // 全部埋まったら即判定
   if (answers.every(a => a !== null)) {
-    setTimeout(checkAnswer, 150); // タップ→即反応しすぎない調整
+    setTimeout(checkAnswer, 150);
   }
 }
 
 function removeAnswer(i) {
+  // ★ 操作が入ったら色を消す
+  if (checked) checked = false;
+
   if (!answers[i]) return;
   pool.push(answers[i]);
   answers[i] = null;
   render();
 }
-
+ 
 function nextProblem() {
   checked = false;
   loadProblem();
