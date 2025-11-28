@@ -1,0 +1,32 @@
+body {
+  font-family: sans-serif;
+  padding: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 10px;
+}
+
+td, th {
+  border: 1px solid #aaa;
+  padding: 8px;
+  text-align: center;
+}
+
+.choice {
+  display: inline-block;
+  margin: 5px;
+  padding: 8px 12px;
+  border: 1px solid #333;
+  border-radius: 8px;
+  background: #f0f0f0;
+}
+.choice:active {
+  background: #ddd;
+}
+
+.answer-cell {
+  min-height: 24px;
+}
