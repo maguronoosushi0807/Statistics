@@ -1,32 +1,54 @@
 body {
   font-family: sans-serif;
-  padding: 10px;
+  padding: 12px;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+}
+
+th {
+  background: #f5f5f5;
 }
 
 td, th {
   border: 1px solid #aaa;
-  padding: 8px;
+  padding: 14px 8px;        /* ← 行を高く */
   text-align: center;
+  font-size: 16px;
 }
 
-.choice {
+/* 国名ボタン共通（選択肢・表内・次へ） */
+.choice,
+.answer-pill,
+.next-btn {
   display: inline-block;
-  margin: 5px;
-  padding: 8px 12px;
-  border: 1px solid #333;
-  border-radius: 8px;
+  margin: 6px;
+  padding: 10px 16px;
+  border-radius: 12px;
   background: #f0f0f0;
-}
-.choice:active {
-  background: #ddd;
+  border: 1px solid #666;
+  min-width: 90px;
+  text-align: center;
+  font-size: 15px;
+  user-select: none;
+
+  transition: transform 0.05s ease,
+              background 0.15s ease;
 }
 
-.answer-cell {
-  min-height: 24px;
+/* 押したときのレスポンス */
+.choice:active,
+.answer-pill:active,
+.next-btn:active {
+  background: #ddd;
+  transform: scale(0.96);
+}
+
+/* 表内の空欄も座布団表示 */
+.answer-pill.empty {
+  background: #fafafa;
+  border: 1px dashed #aaa;
 }
