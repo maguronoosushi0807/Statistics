@@ -1,6 +1,7 @@
 let currentProblem;
 let answers = [];
 let pool = [];
+let checked = false;
 
 function shuffle(arr) {
   return arr.sort(() => Math.random() - 0.5);
@@ -23,19 +24,30 @@ function render() {
   `;
 
   currentProblem.rankings.forEach((r, i) => {
-    const row = document.createElement("tr");
+  const row = document.createElement("tr");
 
-    const pill = answers[i]
-      ? `<div class="answer-pill">${answers[i]}</div>`
-      : `<div class="answer-pill empty">　</div>`;
+  let cls = "answer-pill empty";
+  if (answers[i]) {
+    if (checked) {
+      cls = answers[i] === r.country
+        ? "answer-pill correct"
+        : "answer-pill wrong";
+    } else {
+      cls = "answer-pill";
+    }
+  }
 
-    row.innerHTML = `
-      <td>${i + 1}位</td>
-      <td onclick="removeAnswer(${i})">${pill}</td>
-      <td>${r.value}</td>
-    `;
-    table.appendChild(row);
-  });
+  const pill = answers[i]
+    ? `<div class="${cls}">${answers[i]}</div>`
+    : `<div class="${cls}">　</div>`;
+
+  row.innerHTML = `
+    <td>${i + 1}位</td>
+    <td onclick="removeAnswer(${i})">${pill}</td>
+    <td>${r.value}</td>
+  `;
+  table.appendChild(row);
+});
 
   const choices = document.getElementById("choices");
   choices.innerHTML = "";
@@ -70,7 +82,7 @@ function removeAnswer(i) {
 }
 
 function nextProblem() {
-  checkAnswer();
+  checked = false;
   loadProblem();
 }
 
@@ -80,6 +92,8 @@ let stats = JSON.parse(localStorage.getItem("stats")) || {
 };
 
 function checkAnswer() {
+  checked = true;
+
   let correct = 0;
   answers.forEach((a, i) => {
     if (a === currentProblem.rankings[i].country) correct++;
@@ -88,6 +102,8 @@ function checkAnswer() {
   stats.total += 5;
   stats.correct += correct;
   localStorage.setItem("stats", JSON.stringify(stats));
+
+  render(); // ★ 色反映のため再描画
 
   alert(
     `今回：${correct}/5\n` +
