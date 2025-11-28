@@ -1,6 +1,7 @@
 body {
   font-family: sans-serif;
   padding: 12px;
+  font-size: 150%;   /* ★ 1.5倍 */
 }
 
 table {
