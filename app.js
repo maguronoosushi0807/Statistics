@@ -67,10 +67,10 @@ function selectSet(setId) {
 function shuffle(arr) {
   return arr.sort(() => Math.random() - 0.5);
 }
+let shuffledCountries = []; // 現在の問題用にシャッフル済み国名を保持
 
 function loadProblem() {
   if (currentProblemIndex >= currentSetProblems.length) {
-    // ★ セット終了 → 選択画面に戻る
     document.getElementById("quizScreen").style.display = "none";
     document.getElementById("setSelectScreen").style.display = "block";
     return;
@@ -81,26 +81,30 @@ function loadProblem() {
   unit = currentProblem.unit;
   checked = false;
 
+  // ★ 国の順番を一度だけシャッフル
+  shuffledCountries = shuffle(currentProblem.rankings.map(r => r.country));
+
   render();
 }
+
 
 
 function render() {
   document.getElementById("title").textContent = currentProblem.title;
   document.getElementById("number").textContent = (currentProblemIndex+1)+"/"+currentSetProblems.length;
-
+  
   const table = document.getElementById("statTable");
-
+  
   // ★ ヘッダ行を必ず作る
   table.innerHTML = "<tr><th>順位</th><th>国名</th><th>"+unit+"</th></tr>";
-
-  currentProblem.rankings.forEach((r, i) => {
-  const row = document.createElement("tr");
   
+  currentProblem.rankings.forEach((r, i) => {
+    const row = document.createElement("tr");
+    
   // td を作成
   const rankTd = document.createElement("td");
   rankTd.textContent = (i + 1) + "位";
-
+  
   const countryTd = document.createElement("td");
   countryTd.textContent = answers[i] || "　";
   countryTd.onclick = () => removeAnswer(i);
@@ -128,13 +132,11 @@ function render() {
 
   renderChoices();
 }
-
 function renderChoices() {
   const choices = document.getElementById("choices");
   choices.innerHTML = "";
 
-  currentProblem.rankings.forEach(r => {
-    const country = r.country;
+  shuffledCountries.forEach(country => {
     const div = document.createElement("div");
 
     div.className = "choice";
@@ -146,6 +148,7 @@ function renderChoices() {
     choices.appendChild(div);
   });
 }
+
 
 
 
