@@ -8,7 +8,38 @@ table {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 12px;
+  table-layout: fixed;   /* ★ これが効く */
 }
+
+/* 列幅固定 */
+th:nth-child(1),
+td:nth-child(1) {
+  width: 15%;   /* 順位 */
+}
+
+th:nth-child(2),
+td:nth-child(2) {
+  width: 45%;   /* 国名（固定） */
+}
+
+th:nth-child(3),
+td:nth-child(3) {
+  width: 40%;   /* 数値 */
+}
+
+
+
+
+.upper{
+  display: flex;
+  justify-content: space-between;
+  align-items:flex-end;
+}
+
+#number{
+  color: #333333;
+}
+
 
 th {
   background: #f5f5f5;
@@ -23,8 +54,7 @@ td, th {
 
 /* 国名ボタン共通（選択肢・表内・次へ） */
 .choice,
-.answer-pill,
-.next-btn {
+.answer-pill{
   display: inline-block;
   margin: 6px;
   padding: 10px 16px;
@@ -40,9 +70,36 @@ td, th {
               background 0.15s ease;
 }
 
+
 h1{
-  font-size: 24px;
+    font-size: 24px;
 }
+
+.btn{
+  display: flex;
+  justify-content: space-between;
+}
+
+.next-btn,
+.exit-btn{
+  display: inline-block;
+  margin: 6px;
+  padding: 10px 10px;
+  border-radius: 8px;
+  /* background: #f0f0f0; */
+  border: 1px solid #666;
+  min-width: 90px;
+  text-align:center;
+  font-size: 15px;
+  user-select: none;
+  float: right;
+}
+
+.choice.used {
+  opacity: 0.4;       /* 薄く表示 */
+  pointer-events: none; /* もうタップできない */
+}
+
 
 /* 押したときのレスポンス */
 .choice:active,
@@ -67,4 +124,79 @@ h1{
 .answer-pill.wrong {
   background: #ffd6d6;   /* 赤 */
   border-color: #d53a3a;
+}
+
+
+
+
+
+
+
+
+
+#setList {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.set-btn {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 14px 18px;
+  margin: 8px 0;
+
+  border-radius: 14px;
+  border: 1px solid #666;
+  background: #f5f5f5;
+  overflow: hidden;
+}
+
+/* 左から伸びる正答率バー */
+.set-btn::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: var(--rate, 0%);
+  background: rgba(100, 160, 255, 0.25);
+  z-index: 0;
+}
+
+/* 文字はバーの上に表示 */
+.set-name,
+.set-rate {
+  position: relative;
+  z-index: 1;
+}
+
+.set-rate {
+  font-size: 0.85em;
+  color: #333;
+}
+
+
+.set-btn:active {
+  background: #ddd;
+  transform: scale(0.95);
+}
+
+
+.set-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.set-name {
+  font-size: 1em;
+}
+
+.set-rate {
+  font-size: 0.8em;
+  color: #555;
 }

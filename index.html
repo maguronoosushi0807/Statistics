@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>統計</title>
+<link rel="stylesheet" href=".css">
 <link rel="stylesheet" href="style.css">
 <meta name="viewport"
       content="width=device-width, initial-scale=1.0,
@@ -10,21 +11,31 @@
 </head>
 <body>
 
-<h1 id="title"></h1>
+<!-- セット選択画面 -->
+<div id="setSelectScreen">
+  <h2>テーマ選択</h2>
+  <div id="setList"></div>
+</div>
 
-<table id="statTable">
-  <tr>
-    <th>順位</th>
-    <th>国名</th>
-    <th>数値</th>
-  </tr>
-</table>
+<!-- 問題画面（最初は非表示） -->
+<div id="quizScreen" style="display:none;">
+  <div class="upper">
+    <h1 id="title"></h1>
+    <h1 id="number"></h1>
+  </div>
 
-<div id="choices"></div>
+  <table id="statTable"></table>
 
-<div class="next-btn" onclick="nextProblem()">次の問題</div>
+  <div id="choices"></div>
+
+  <div class="btn">  
+    <div class="exit-btn" onclick="exitProblem()">やめる</div>
+    <div class="next-btn" onclick="nextProblem()">次の問題</div>
+  </div>
+</div>
 
 <script src="data.js"></script>
 <script src="app.js"></script>
 </body>
+
 </html>
