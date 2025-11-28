@@ -237,26 +237,50 @@ function checkAnswer() {
 }
 
 
-let map;
+const mapDiv = document.getElementById("mapViewport");
 
-function initMap() {
-  map = L.map('mapContainer', {
-    center: [20, 0],   // 緯度・経度の中心
-    zoom: 2,           // 初期ズーム
-    minZoom: 1,
-    maxZoom: 10
-  });
+let isDragging = false;
+let startX, startY;
+let offsetX = 0, offsetY = 0;
+let scale = 1;
 
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '© OpenStreetMap contributors'
-  }).addTo(map);
-}
+// ドラッグ開始
+mapDiv.addEventListener("mousedown", e => {
+  isDragging = true;
+  startX = e.clientX - offsetX;
+  startY = e.clientY - offsetY;
+  mapDiv.classList.add("dragging");
+});
 
-// ページロード時に呼び出す
-window.onload = () => {
-  initMap();
-  renderSetSelect(); // 既存処理
-};
+// ドラッグ中
+mapDiv.addEventListener("mousemove", e => {
+  if (!isDragging) return;
+  offsetX = e.clientX - startX;
+  offsetY = e.clientY - startY;
+  mapDiv.style.backgroundPosition = `${offsetX}px ${offsetY}px`;
+});
+
+// ドラッグ終了
+mapDiv.addEventListener("mouseup", () => {
+  isDragging = false;
+  mapDiv.classList.remove("dragging");
+});
+mapDiv.addEventListener("mouseleave", () => {
+  isDragging = false;
+  mapDiv.classList.remove("dragging");
+});
+
+// ホイールで拡大縮小
+mapDiv.addEventListener("wheel", e => {
+  e.preventDefault();
+  const zoomFactor = 1.1;
+  scale *= e.deltaY < 0 ? zoomFactor : 1/zoomFactor;
+
+  // 背景サイズを scale に応じて変更
+  mapDiv.style.backgroundSize = `${scale * 100}% auto`;
+});
+
+
 
 
 

@@ -225,3 +225,23 @@ td.wrong {
   font-size: 0.8em;
   color: #555;
 }
+
+
+ #mapViewport {
+  width: 100%;
+  height: 300px;
+  /* border: 1px solid #aaa; */
+  overflow: hidden;
+  position: relative;
+  touch-action: none;
+  
+  /* 背景画像としてPNGをリピート */
+  background-image: url('map.png');
+  background-repeat: repeat; /* 横・縦に繰り返す */
+  background-position: 0 0;
+  background-size: auto; /* 必要なら cover / contain に変更可能 */
+  cursor: grab;
+}
+#mapViewport.dragging {
+  cursor: grabbing;
+}
