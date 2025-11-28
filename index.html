@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>統計</title>
+<title>統計覚えるやつ</title>
 <link rel="stylesheet" href=".css">
 <link rel="stylesheet" href="style.css">
 <meta name="viewport"
@@ -10,33 +10,33 @@
                maximum-scale=1.0, user-scalable=no">
 </head>
 <body>
-
-<!-- セット選択画面 -->
-<div id="setSelectScreen">
-  <h2>テーマ選択</h2>
-  <div id="setList"></div>
-</div>
-
-<!-- 問題画面（最初は非表示） -->
-<div id="quizScreen" style="display:none;">
-  <div class="upper">
-    <h1 id="title"></h1>
-    <h1 id="number"></h1>
+  
+  <!-- セット選択画面 -->
+  <div id="setSelectScreen">
+    <h2>テーマ選択</h2>
+    <div id="setList"></div>
   </div>
-
-  <table id="statTable"></table>
-
-  <div id="choices"></div>
-
-  <div class="btn">  
-    <div class="exit-btn" onclick="exitProblem()">やめる</div>
-    <div class="next-btn" onclick="nextProblem()">次の問題</div>
+  
+  <!-- 問題画面（最初は非表示） -->
+  <div id="quizScreen" style="display:none;">
+    <div class="upper">
+      <h1 id="title"></h1>
+      <h1 id="number"></h1>
+    </div>
+    
+    <table id="statTable"></table>
+    
+    <div id="choices"></div>
+    
+    <div class="btn">  
+      <div class="exit-btn" onclick="exitProblem()">やめる</div>
+      <div class="next-btn" onclick="nextProblem()">次の問題</div>
+    </div>
+    
+    <img src="map_alpha.png" id="map_view">
+    
+    
   </div>
-
-  <div id="mapViewport"></div>
-
-
-</div>
 
 
 
