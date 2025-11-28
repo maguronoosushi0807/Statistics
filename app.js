@@ -48,9 +48,15 @@ function render() {
 function placeAnswer(country) {
   const idx = answers.findIndex(a => a === null);
   if (idx === -1) return;
+
   answers[idx] = country;
   pool = pool.filter(c => c !== country);
   render();
+
+  // ★ 全部埋まったら即チェック
+  if (answers.every(a => a !== null)) {
+    setTimeout(checkAnswer, 150); // タップ→即反応しすぎない調整
+  }
 }
 
 function removeAnswer(i) {
