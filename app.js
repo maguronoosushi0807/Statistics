@@ -109,12 +109,12 @@ function checkAnswer() {
   stats.correct += correct;
   localStorage.setItem("stats", JSON.stringify(stats));
 
-  render(); // ★ 色反映のため再描画
+  render(); // 色を反映
 
-  alert(
-    `今回：${correct}/5\n` +
-    `累計正答率：${(stats.correct / stats.total * 100).toFixed(1)}%`
-  );
+  // ★ 判定表示を少し見せてから次の問題へ
+  setTimeout(() => {
+    nextProblem();
+  }, 800); // ← 好きな時間に調整（ms）
 }
 
 loadProblem();
