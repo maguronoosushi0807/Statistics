@@ -2,6 +2,7 @@ let currentSetId = null;
 let currentProblem;
 let answers = [];
 let pool = [];
+let unit = "";
 let checked = false;
 let currentSetProblems = [];  // 今回解く問題配列（シャッフル済み）
 let currentProblemIndex = 0;  // 何問目か
@@ -77,6 +78,7 @@ function loadProblem() {
 
   currentProblem = currentSetProblems[currentProblemIndex];
   answers = Array(5).fill(null);
+  unit = currentProblem.unit;
   checked = false;
 
   render();
@@ -90,40 +92,39 @@ function render() {
   const table = document.getElementById("statTable");
 
   // ★ ヘッダ行を必ず作る
-  table.innerHTML = `
-    <tr>
-      <th>順位</th>
-      <th>国名</th>
-      <th>数値</th>
-    </tr>
-  `;
+  table.innerHTML = "<tr><th>順位</th><th>国名</th><th>"+unit+"</th></tr>";
 
   currentProblem.rankings.forEach((r, i) => {
-    const row = document.createElement("tr");
+  const row = document.createElement("tr");
+  
+  // td を作成
+  const rankTd = document.createElement("td");
+  rankTd.textContent = (i + 1) + "位";
 
-    let cls = "answer-pill empty";
-    if (answers[i]) {
-      if (checked) {
-        cls = answers[i] === r.country
-          ? "answer-pill correct"
-          : "answer-pill wrong";
-      } else {
-        cls = "answer-pill";
-      }
+  const countryTd = document.createElement("td");
+  countryTd.textContent = answers[i] || "　";
+  countryTd.onclick = () => removeAnswer(i);
+
+  // 正誤判定が済んでいる場合、td にクラス付与
+  if (checked && answers[i]) {
+    if (answers[i] === r.country) {
+      countryTd.classList.add("correct"); // 正解 → 青など
+    } else {
+      countryTd.classList.add("wrong");   // 不正解 → 赤など
     }
+  }
 
-    const pill = answers[i]
-      ? `<div class="${cls}">${answers[i]}</div>`
-      : `<div class="${cls}">　</div>`;
+  const valueTd = document.createElement("td");
+  valueTd.textContent = r.value;
 
-    row.innerHTML = `
-      <td>${i + 1}位</td>
-      <td onclick="removeAnswer(${i})">${pill}</td>
-      <td>${r.value}</td>
-    `;
+  // 行に追加
+  row.appendChild(rankTd);
+  row.appendChild(countryTd);
+  row.appendChild(valueTd);
 
-    table.appendChild(row);
-  });
+  table.appendChild(row);
+});
+
 
   renderChoices();
 }
@@ -225,9 +226,11 @@ function checkAnswer() {
 
   render();
 
-  setTimeout(() => {
-    nextProblem();
-  }, 800);
+  if(allCorrect){
+    setTimeout(() => {
+      nextProblem();
+    }, 800);
+  }
 }
 
 
