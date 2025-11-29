@@ -1,18 +1,24 @@
 const setLists = {
   agriculture: [
-    {name: "三大穀物", id:"agriculture_1"},
-    {name: "食用", id:"agriculture_2"},
-    {name: "飲用", id:"agriculture_3"},
-    {name: "その他穀物", id:"agriculture_4"},
-    {name: "牛", id:"agriculture_5"},
-    {name: "豚", id:"agriculture_6"},
-    {name: "鶏", id:"agriculture_7"},
-    {name: "羊", id:"agriculture_8"},
+    {name: "米", id:"agriculture_rice"},
+    {name: "小麦", id:"agriculture_wheat"},
+    {name: "とうもころし", id:"agriculture_corn"},
+    {name: "大豆", id:"agriculture_soybeans"},
+    {name: "地中海の作物", id:"agriculture_mediterranean"},
+    {name: "その他の作物", id:"agriculture_others"},
+    {name: "コーヒー", id:"agriculture_coffe"},
+    {name: "カカオ豆", id:"agriculture_cacao"},
+    {name: "茶", id:"agriculture_tea"},
+    {name: "牛", id:"agriculture_cow"},
+    {name: "豚", id:"agriculture_pig"},
+    {name: "羊", id:"agriculture_sheep"},
+    {name: "鶏", id:"agriculture_bird"},
+    {name: "dammy", id:"dammy"},
   ]
 };
 
 const problemSets = {
-  agriculture_1: [
+  agriculture_rice: [
     {
       title: "米の生産(2022)",
       unit: "万トン",
@@ -53,6 +59,8 @@ const problemSets = {
         { country:"コートジボワール", value:156},
       ],
     },
+  ],
+  agriculture_wheat: [
     {
       title: "小麦の生産(2022)",
       unit: "万トン",
@@ -93,6 +101,8 @@ const problemSets = {
         { country:"アルジェリア", value:702},
       ],
     },
+  ],
+  agriculture_corn: [
     {
       title: "とうもろこしの生産(2022)",
       unit: "万トン",
@@ -134,7 +144,7 @@ const problemSets = {
       ],
     },
   ],
-  agriculture_2: [
+  agriculture_soybeans: [
     {
       title: "大豆の生産(2022)",
       unit: "万トン",
@@ -157,6 +167,43 @@ const problemSets = {
         { country:"ウルグアイ", value:307},
       ],
     },
+  ],
+  agriculture_mediterranean: [
+    {
+      title: "ぶどうの生産(2022)",
+      unit: "万トン",
+      rankings: [
+        { country:"中国", value:1260},
+        { country:"イタリア", value:844},
+        { country:"フランス", value:620},
+        { country:"スペイン", value:590},
+        { country:"アメリカ", value:537},
+      ],
+    },
+    {
+      title: "オリーブの生産(2022)",
+      unit: "千トン",
+      rankings: [
+        { country:"スペイン", value:3940},
+        { country:"トルコ", value:2976},
+        { country:"イタリア", value:2160},
+        { country:"モロッコ", value:1968},
+        { country:"チュニジア", value:1200},
+      ],
+    },
+    {
+      title: "ワインの生産(2022)",
+      unit: "万トン",
+      rankings: [
+        { country:"イタリア", value:509},
+        { country:"フランス", value:371},
+        { country:"スペイン", value:370},
+        { country:"アメリカ", value:206},
+        { country:"中国", value:181},
+      ],
+    },
+  ],
+  agriculture_others: [
     {
       title: "ばれいしょ（じゃがいも）の生産(2022)",
       unit: "万トン",
@@ -180,18 +227,18 @@ const problemSets = {
       ],
     },
     {
-      title: "ぶどうの生産(2022)",
+      title: "綿花の生産(2021)",
       unit: "万トン",
       rankings: [
-        { country:"中国", value:1260},
-        { country:"イタリア", value:844},
-        { country:"フランス", value:620},
-        { country:"スペイン", value:590},
-        { country:"アメリカ", value:537},
+        { country:"インド", value:599},
+        { country:"中国", value:573},
+        { country:"アメリカ", value:382},
+        { country:"ブラジル", value:223},
+        { country:"パキスタン", value:142},
       ],
     },
   ],
-  agriculture_3: [
+  agriculture_cacao: [
     {
       title: "カカオ豆の生産(2022)",
       unit: "千トン",
@@ -203,6 +250,8 @@ const problemSets = {
         { country:"カメルーン", value:300},
       ],
     },
+  ],
+  agriculture_tea: [
     {
       title: "茶の生産(2022)",
       unit: "千トン",
@@ -255,6 +304,8 @@ const problemSets = {
 
       ],
     },
+  ],
+  agriculture_coffe: [
     {
       title: "コーヒー豆の生産(2022)",
       unit: "千トン",
@@ -306,42 +357,7 @@ const problemSets = {
       ],
     },
   ],
-  agriculture_4: [
-    {
-      title: "オリーブの生産(2022)",
-      unit: "千トン",
-      rankings: [
-        { country:"スペイン", value:3940},
-        { country:"トルコ", value:2976},
-        { country:"イタリア", value:2160},
-        { country:"モロッコ", value:1968},
-        { country:"チュニジア", value:1200},
-      ],
-    },
-    {
-      title: "ワインの生産(2022)",
-      unit: "万トン",
-      rankings: [
-        { country:"イタリア", value:509},
-        { country:"フランス", value:371},
-        { country:"スペイン", value:370},
-        { country:"アメリカ", value:206},
-        { country:"中国", value:181},
-      ],
-    },
-    {
-      title: "綿花の生産(2021)",
-      unit: "万トン",
-      rankings: [
-        { country:"インド", value:599},
-        { country:"中国", value:573},
-        { country:"アメリカ", value:382},
-        { country:"ブラジル", value:223},
-        { country:"パキスタン", value:142},
-      ],
-    },
-  ],
-  agriculture_5: [
+  agriculture_cow: [
     {
       title: "牛の頭数(2022)",
       unit: "万頭",
@@ -388,7 +404,7 @@ const problemSets = {
     },
 
   ],
-  agriculture_6: [
+  agriculture_pig: [
     
     {
       title: "豚の頭数(2022)",
@@ -413,7 +429,7 @@ const problemSets = {
       ],
     }
   ],
-  agriculture_7: [
+  agriculture_bird: [
     
     {
       title: "鶏肉の生産(2022)",
@@ -427,7 +443,7 @@ const problemSets = {
       ],
     },
   ],
-  agriculture_8: [
+  agriculture_sheep: [
     {
       title: "羊の頭数(2022)",
       unit: "万頭",
@@ -461,6 +477,19 @@ const problemSets = {
         { country: "ペルー", value: 17000 },
         { country: "ロシア", value: 16000 },
         { country: "アメリカ", value: 11000 }
+      ]
+    }
+  ],
+  dammy: [
+    {
+      title: "dammy",
+      unit: "dammy",
+      rankings:[
+        {country: "dammy_1", value: -1},
+        {country: "dammy_2", value: -2},
+        {country: "dammy_3", value: -3},
+        {country: "dammy_4", value: -4},
+        {country: "dammy_5", value: -5},
       ]
     }
   ]
