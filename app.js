@@ -27,32 +27,45 @@ function renderSetSelect() {
   list.innerHTML = "";
 
   setLists.agriculture.forEach(set => {
-    const div = document.createElement("div");
-    div.className = "set-btn";
+    if(set.index != null){
+      const div = document.createElement("div");
+      
+      div.className = "set-index";
+      
+      div.innerHTML = `
+        <span class="index-name">${set.index}</span>
+      `;
 
-    const stat = setStats[set.id];
-    const totalProblems = problemSets[set.id]?.length || 0;
+      list.appendChild(div);
+    }else{  
+      const div = document.createElement("div");
+    
+      div.className = "set-btn";
 
-    // ✅ 未学習でも問題数は表示
-    const solved = stat ? stat.solved : 0;
-    const correct = stat ? stat.correct : 0;
+      const stat = setStats[set.id];
+      const totalProblems = problemSets[set.id]?.length || 0;
 
-    const displayText = `${correct} / ${totalProblems}`;
+      // ✅ 未学習でも問題数は表示
+      const solved = stat ? stat.solved : 0;
+      const correct = stat ? stat.correct : 0;
 
-    // ✅ 進捗率（未学習は 0%）
-    const rate = stat && stat.solved > 0
-      ? Math.round(correct / totalProblems * 100)
-      : 0;
+      const displayText = `${correct} / ${totalProblems}`;
 
-    div.style.setProperty("--rate", rate + "%");
+      // ✅ 進捗率（未学習は 0%）
+      const rate = stat && stat.solved > 0
+        ? Math.round(correct / totalProblems * 100)
+        : 0;
 
-    div.innerHTML = `
-      <span class="set-name">${set.name}</span>
-      <span class="set-rate">${displayText}</span>
-    `;
+      div.style.setProperty("--rate", rate + "%");
 
-    div.onclick = () => selectSet(set.id);
-    list.appendChild(div);
+      div.innerHTML = `
+        <span class="set-name">${set.name}</span>
+        <span class="set-rate">${displayText}</span>
+      `;
+
+      div.onclick = () => selectSet(set.id);
+      list.appendChild(div);
+    }
   });
 }
 
@@ -69,7 +82,8 @@ function selectSet(setId) {
   sessionCorrect = 0;
 
   // 問題順シャッフル（1回だけ）
-  currentSetProblems = shuffle([...problemSets[setId]]);
+  // currentSetProblems = shuffle([...problemSets[setId]]);
+  currentSetProblems = [...problemSets[setId]];
   currentProblemIndex = 0;
 
   document.getElementById("setSelectScreen").style.display = "none";

@@ -1,19 +1,35 @@
 const setLists = {
   agriculture: [
+    {index:"三大穀物"},
     {name: "米", id:"agriculture_rice"},
     {name: "小麦", id:"agriculture_wheat"},
     {name: "とうもころし", id:"agriculture_corn"},
+    {index:"その他"},
     {name: "大豆", id:"agriculture_soybeans"},
-    {name: "地中海の作物", id:"agriculture_mediterranean"},
-    {name: "その他の作物", id:"agriculture_others"},
+    {name: "綿花", id:"menka"},
+    {name: "農業(地中海)", id:"agriculture_mediterranean"},
+    {name: "農業(その他)", id:"agriculture_others"},
+    {index:"飲料"},
+    {name: "茶", id:"agriculture_tea"},
     {name: "コーヒー", id:"agriculture_coffe"},
     {name: "カカオ豆", id:"agriculture_cacao"},
-    {name: "茶", id:"agriculture_tea"},
+    {index:"畜産"},
+    {name: "羊", id:"agriculture_sheep"},
     {name: "牛", id:"agriculture_cow"},
     {name: "豚", id:"agriculture_pig"},
-    {name: "羊", id:"agriculture_sheep"},
     {name: "鶏", id:"agriculture_bird"},
-    {name: "dammy", id:"dammy"},
+    {index: "林業"},
+    {name: "木材", id:"agriculture_wood"},
+    {index: "水産業"},
+    {name: "水産業", id:"agriculture_fish"},
+    {index: "エネルギー"},
+    {name: "石炭", id:"energy_coal"},
+    {name: "原油", id:"energy_oil"},
+    {name: "天然ガス", id:"energy_gas"},
+    {name: "その他", id:"energy_other"},
+
+    // {name: "", id:""},
+    // {name: "dammy", id:"dammy"},
   ]
 };
 
@@ -168,6 +184,42 @@ const problemSets = {
       ],
     },
   ],
+  agriculture_menka:[
+    {
+      title: "綿花の生産(2021)",
+      unit: "万トン",
+      rankings: [
+        { country:"インド", value:599},
+        { country:"中国", value:573},
+        { country:"アメリカ", value:382},
+        { country:"ブラジル", value:223},
+        { country:"パキスタン", value:142},
+      ],
+    },
+    {
+      title: "綿花の輸出(2022)",
+      unit: "万トン",
+      rankings: [
+        { country:"アメリカ", value:345},
+        { country:"ブラジル", value:180},
+        { country:"オーストラリア", value:112},
+        { country:"インド", value:43},
+        { country:"ペナン", value:32},
+      ],
+    },
+    {
+      title: "綿花の輸入(2022)",
+      unit: "万トン",
+      rankings: [
+        { country:"中国", value:193},
+        { country:"ベトナム", value:125},
+        { country:"バングラデシュ", value:122},
+        { country:"トルコ", value:115},
+        { country:"パキスタン", value:78},
+      ],
+    },
+
+  ],
   agriculture_mediterranean: [
     {
       title: "ぶどうの生産(2022)",
@@ -224,17 +276,6 @@ const problemSets = {
         { country:"タイ", value:3407},
         { country:"ガーナ", value:2559},
         { country:"カンボジア", value:1770},
-      ],
-    },
-    {
-      title: "綿花の生産(2021)",
-      unit: "万トン",
-      rankings: [
-        { country:"インド", value:599},
-        { country:"中国", value:573},
-        { country:"アメリカ", value:382},
-        { country:"ブラジル", value:223},
-        { country:"パキスタン", value:142},
       ],
     },
   ],
@@ -467,18 +508,249 @@ const problemSets = {
       ],
     },
   ],
-  agriculture_9: [
+  agriculture_wood: [
     {
-      title: "漁獲量",
-      unit: "千トン",
+      title: "木材伐採量(2022)",
+      unit: "百万㎡",
       rankings: [
-        { country: "中国", value: 65000 },
-        { country: "インドネシア", value: 22000 },
-        { country: "ペルー", value: 17000 },
-        { country: "ロシア", value: 16000 },
-        { country: "アメリカ", value: 11000 }
+        { country:"アメリカ", value:459},
+        { country:"インド", value:348},
+        { country:"中国", value:317},
+        { country:"ブラジル", value:304},
+        { country:"ロシア", value:197},
+      ],
+    },
+    {
+      title: "木材の輸出(2022)",
+      unit: "万㎡",
+      rankings: [
+        { country:"カナダ", value:2846},
+        { country:"ロシア", value:2744},
+        { country:"ドイツ", value:2160},
+        { country:"ニュージーランド", value:2158},
+        { country:"スウェーデン", value:1609},
+      ],
+    },
+    {
+      title: "木材の輸入(2022)",
+      unit: "万㎡",
+      rankings: [
+        { country:"中国", value:7009},
+        { country:"アメリカ", value:2802},
+        { country:"オーストリア", value:1070},
+        { country:"ドイツ", value:1004},
+        { country:"イタリア", value:967},
+      ],
+    },
+    {
+      title: "日本の木材輸入先(2023)",
+      unit: "億円",
+      rankings: [
+        { country:"カナダ", value:698},
+        { country:"アメリカ", value:650},
+        { country:"スウェーデン", value:268},
+        { country:"フィンランド", value:259},
+        { country:"ロシア", value:255},
+      ],
+    },
+  ],
+  agriculture_fish: [
+    {
+      title: "漁獲量+養殖業の生産量(2022)",
+      unit: "万トン",
+      rankings: [
+        { country: "中国", value: 8857 },
+        { country: "インドネシア", value: 2203 },
+        { country: "インド", value: 1577 },
+        { country: "ベトナム", value: 876 },
+        { country: "ペルー", value: 551 }
       ]
-    }
+    },
+    {
+      title: "日本のエビの輸入先(2023)",
+      unit: "億円",
+      rankings: [
+        { country:"インド", value:395},
+        { country:"ベトナム", value:364},
+        { country:"インドネシア", value:329},
+        { country:"アルゼンチン", value:176},
+        { country:"タイ", value:110},
+      ],
+    },
+  ],
+  energy_coal: [
+    {
+      title: "石炭の埋蔵量(2020)",
+      unit: "億トン",
+      rankings: [
+        { country:"アメリカ", value:2189},
+        { country:"中国", value:1351},
+        { country:"インド", value:1060},
+        { country:"オーストラリア", value:737},
+        { country:"ロシア", value:717},
+      ],
+    },
+    {
+      title: "石炭の産出量(2021)",
+      unit: "万トン",
+      rankings: [
+        { country:"中国", value:412583},
+        { country:"インド", value:77819},
+        { country:"インドネシア", value:59584},
+        { country:"オーストラリア", value:39401},
+        { country:"ロシア", value:35686},
+      ],
+    },
+    {
+      title: "石炭の輸出量(2021)",
+      unit: "万トン",
+      rankings: [
+        { country:"インドネシア", value:42046},
+        { country:"オーストラリア", value:36451},
+        { country:"ロシア", value:19779},
+        { country:"アメリカ", value:7137},
+        { country:"南アフリカ", value:6356},
+      ],
+    },
+    {
+      title: "石炭の輸入量(2021)",
+      unit: "万トン",
+      rankings: [
+        { country:"中国", value:32327},
+        { country:"インド", value:20893},
+        { country:"日本", value:18395},
+        { country:"韓国", value:11730},
+        { country:"ドイツ", value:3842},
+      ],
+    },
+  ],
+  energy_oil: [
+    {
+      title: "原油埋蔵量(2020)",
+      unit: "億トン",
+      rankings: [
+        { country:"ベネズエラ", value:480},
+        { country:"サウジアラビア", value:409},
+        { country:"カナダ", value:271},
+        { country:"イラン", value:217},
+        { country:"イラク", value:196},
+      ],
+    },
+    {
+      title: "原油産出量(2022)",
+      unit: "万トン",
+      rankings: [
+        { country:"アメリカ", value:58632},
+        { country:"サウジアラビア", value:52318},
+        { country:"ロシア", value:50334},
+        { country:"イラク", value:21839},
+        { country:"中国", value:20472},
+      ],
+    },
+    {
+      title: "原油の輸出量(2021)",
+      unit: "万トン",
+      rankings: [
+        { country:"サウジアラビア", value:30943},
+        { country:"ロシア", value:23271},
+        { country:"イラク", value:16897},
+        { country:"カナダ", value:15788},
+        { country:"アメリカ", value:14600},
+      ],
+    },
+    {
+      title: "原油の輸入量(2021)",
+      unit: "万トン",
+      rankings: [
+        { country:"中国", value:51292},
+        { country:"アメリカ", value:30236},
+        { country:"インド", value:21198},
+        { country:"韓国", value:12941},
+        { country:"日本", value:12652},
+      ],
+    },
+    {
+      title: "日本の原油輸入先(2023)",
+      unit: "千kL",
+      rankings: [
+        { country:"サウジアラビア", value:60689},
+        { country:"アラブ首長国", value:58605},
+        { country:"クウェート", value:13348},
+        { country:"カタール", value:7271},
+        { country:"アメリカ", value:2879},
+      ],
+    },
+  ],
+  energy_gas: [
+    {
+      title: "天然ガスの埋蔵量(2020)",
+      unit: "百億㎥",
+      rankings: [
+        { country:"ロシア", value:3739},
+        { country:"イラン", value:3210},
+        { country:"カタール", value:2467},
+        { country:"トルクメニスタン", value:1360},
+        { country:"アメリカ", value:1262},
+      ],
+    },
+    {
+      title: "天然ガスの産出量(2022)",
+      unit: "億㎥",
+      rankings: [
+        { country:"アメリカ", value:10300},
+        { country:"ロシア", value:6890},
+        { country:"イラン", value:2662},
+        { country:"中国", value:2201},
+        { country:"カナダ", value:2033},
+      ],
+    },
+    {
+      title: "天然ガスの輸出量(2022)",
+      unit: "億㎥",
+      rankings: [
+        { country:"アメリカ", value:1955},
+        { country:"ロシア", value:1680},
+        { country:"カタール", value:1261},
+        { country:"ノルウェー", value:1237},
+        { country:"オーストラリア", value:1129},
+      ],
+    },
+    {
+      title: "天然ガスの輸入量(2022)",
+      unit: "億㎥",
+      rankings: [
+        { country:"中国", value:1412},
+        { country:"日本", value:938},
+        { country:"ドイツ", value:877},
+        { country:"アメリカ", value:856},
+        { country:"イタリア", value:726},
+      ],
+    },
+  ],
+  energy_other: [
+    {
+      title: "液体バイオ燃料の生産量(2022)",
+      unit: "万トン",
+      rankings: [
+        { country:"アメリカ", value:5674},
+        { country:"ブラジル", value:3054},
+        { country:"インドネシア", value:970},
+        { country:"中国", value:517},
+        { country:"ドイツ", value:401},
+      ],
+    },
+    {
+      title: "発電量(2022)",
+      unit: "億kWh",
+      rankings: [
+        { country:"中国", value:89506},
+        { country:"アメリカ", value:44954},
+        { country:"インド", value:18141},
+        { country:"ロシア", value:11512},
+        { country:"日本", value:10186},
+      ],
+    },
+
   ],
   dammy: [
     {

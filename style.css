@@ -21,6 +21,18 @@ table {
   table-layout: fixed;   /* ★ これが効く */
 }
 
+.set-index{
+  margin-top: 32px;
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+
+#header{
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
 /* 列幅固定 */
 th:nth-child(1),
 td:nth-child(1) {
