@@ -27,6 +27,10 @@ const setLists = {
     {name: "原油", id:"energy_oil"},
     {name: "天然ガス", id:"energy_gas"},
     {name: "その他", id:"energy_other"},
+    {index: "鉱業"},
+    {name: "鉄", id:"mining_iron"},
+    {name: "アルミニウム", id:"mining_alminium"},
+    {name: "その他", id:"mining_others"},
 
     // {name: "", id:""},
     // {name: "dammy", id:"dammy"},
@@ -748,6 +752,167 @@ const problemSets = {
         { country:"インド", value:18141},
         { country:"ロシア", value:11512},
         { country:"日本", value:10186},
+      ],
+    },
+
+  ],
+  mining_iron:[
+    {
+      title: "鉄鉱石の産出量(2021)",
+      unit: "万トン",
+      rankings: [
+        { country:"オーストラリア", value:56503},
+        { country:"ブラジル", value:27286},
+        { country:"中国", value:24600},
+        { country:"インド", value:16900},
+        { country:"ロシア", value:6670},
+      ],
+    },
+    {
+      title: "銑鉄の生産(2022)",
+      unit: "万トン",
+      rankings: [
+        { country:"中国", value:86383},
+        { country:"インド", value:7986},
+        { country:"日本", value:6415},
+        { country:"ロシア", value:5161},
+        { country:"韓国", value:4220},
+      ],
+    },
+    {
+      title: "粗鋼の生産(2023)",
+      unit: "万トン",
+      rankings: [
+        { country:"中国", value:101908},
+        { country:"インド", value:14076},
+        { country:"日本", value:8700},
+        { country:"アメリカ", value:8139},
+        { country:"ロシア", value:7603},
+      ],
+    },
+    {
+      title: "鉄鋼の輸出(2022)",
+      unit: "万トン",
+      rankings: [
+        { country:"中国", value:7648},
+        { country:"日本", value:3230},
+        { country:"韓国", value:2616},
+        { country:"ドイツ", value:2453},
+        { country:"イタリア", value:1695},
+      ],
+    },
+    {
+      title: "鉄鋼の輸入(2023)",
+      unit: "万トン",
+      rankings: [
+        { country:"アメリカ", value:4169},
+        { country:"中国", value:2781},
+        { country:"ドイツ", value:2610},
+        { country:"イタリア", value:2375},
+        { country:"韓国", value:1568},
+      ],
+    },
+    {
+      title: "鉄鋼の消費",
+      unit: "万トン",
+      rankings: [
+        { country:"中国", value:92565},
+        { country:"インド", value:11616},
+        { country:"アメリカ", value:9453},
+        { country:"日本", value:5498},
+        { country:"韓国", value:5130},
+      ],
+    },
+    // {
+    //   title: "鉄鉱石の埋蔵量(2023)",
+    //   unit: "億トン",
+    //   rankings: [
+    //     { country:"オーストラリア", value:270},
+    //     { country:"ブラジル", value:150},
+    //     { country:"ロシア", value:140},
+    //     { country:"中国", value:69},
+    //     { country:"インド", value:34},
+    //   ],
+    // },
+    // {
+    //   title: "鉄鉱石の輸出量(2022)",
+    //   unit: "万トン",
+    //   rankings: [
+    //     { country:"", value:88798},
+    //     { country:"", value:34618},
+    //     { country:"", value:5831},
+    //     { country:"", value:5374},
+    //     { country:"", value:2399},
+    //   ],
+    // },
+  ],
+  mining_alminium:[
+    {
+      title: "ボーキサイトの産出(2021)",
+      unit: "万トン",
+      rankings: [
+        { country:"オーストラリア", value:10306},
+        { country:"中国", value:9000},
+        { country:"ギニア", value:8600},
+        { country:"ブラジル", value:3300},
+        { country:"インドネシア", value:2100},
+      ],
+    },
+    {
+      title: "アルミニウムの生産(2021)",
+      unit: "千トン",
+      rankings: [
+        { country:"中国", value:38900},
+        { country:"インド", value:3967},
+        { country:"ロシア", value:3640},
+        { country:"カナダ", value:3137},
+        { country:"アラブ首長国", value:2540},
+      ],
+    },
+    {
+      title: "アルミニウムの輸出(2021)",
+      unit: "千トン",
+      rankings: [
+        { country:"ロシア", value:3481},
+        { country:"カナダ", value:2777},
+        { country:"オランダ", value:2693},
+        { country:"インド", value:2668},
+        { country:"アラブ首長国", value:2645},
+      ],
+    },
+    {
+      title: "アルミニウムの輸入(2021)",
+      unit: "千トン",
+      rankings: [
+        { country:"アメリカ", value:3980},
+        { country:"中国", value:2734},
+        { country:"日本", value:2537},
+        { country:"オランダ", value:2503},
+        { country:"ドイツ", value:2350},
+      ],
+    },
+  ],
+  mining_others:[
+    {
+      title: "銅鉱の産出(2020)",
+      unit: "万トン",
+      rankings: [
+        { country:"チリ", value:573.3},
+        { country:"ペルー", value:215.4},
+        { country:"中国", value:172.3},
+        { country:"コンゴ民主", value:160.2},
+        { country:"アメリカ", value:120.0},
+      ],
+    },
+    {
+      title: "金鉱の産出(2022)",
+      unit: "トン",
+      rankings: [
+        { country:"中国", value:372},
+        { country:"オーストラリア", value:314},
+        { country:"ロシア", value:310},
+        { country:"カナダ", value:206},
+        { country:"アメリカ", value:173},
       ],
     },
 
